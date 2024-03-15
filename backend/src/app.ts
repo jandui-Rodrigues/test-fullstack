@@ -1,5 +1,5 @@
 import * as express from 'express';
-// import router from './routes/index';
+import router from './Routes/index';
 
 class App {
   public app: express.Express;
@@ -9,7 +9,7 @@ class App {
 
     this.config();
     this.app.use(express.json());
-    // this.routes();
+    this.routes();
     // Não remover essa rota
     this.app.get('/', (req, res) => res.json({ ok: true }));
   }
@@ -30,9 +30,9 @@ class App {
     this.app.listen(PORT, () => console.log(`Running on port ${PORT}`));
   }
 
-//   private routes(): void {
-//     this.app.use(router);
-//   }
+  private routes(): void {
+    this.app.use(router);
+  }
 }
 
 export { App };
