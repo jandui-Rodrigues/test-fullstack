@@ -11,7 +11,7 @@ export default class ClientRoutes {
 
   buildRoutes() {
     this.router.get("/", this.clientController.getAll);
-
+    this.router.get("/:id", this.clientController.getById);
     return this.router;
   }
 }
