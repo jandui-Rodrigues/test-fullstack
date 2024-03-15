@@ -11,6 +11,7 @@
     "build": "tsc --project tsconfig.json",
     "prestart": "npm run build && npm run db:reset",
     "start": "node ./build/server.js",
+    "init:api": " npm run build && node ./build/server.js",
     "predev": "npm run db:reset",
     "dev": "tsnd --watch \"./src/**\" --transpile-only ./src/server.ts"
   },
