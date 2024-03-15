@@ -76,7 +76,7 @@ export default class ClientService {
     const newClient = {} as ServiceResponse<IClient>;
     try {
       const client = await this.clientModel.create(data);
-      newClient.status = "CONFLICT";
+      newClient.status = "CREATED";
       newClient.data = client;
       return newClient;
     } catch (error) {

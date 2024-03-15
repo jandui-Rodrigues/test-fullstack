@@ -6,9 +6,9 @@ const statusHTTP = [
 
 export default function mapStatusHTTP(status: string): number {
   const statusHTTPMap: Record<string, number> = {
-    [statusHTTP[2]]: 404,
-    [statusHTTP[3]]: 200,
-    [statusHTTP[5]]: 201,
+    [statusHTTP[0]]: 404,
+    [statusHTTP[1]]: 200,
+    [statusHTTP[2]]: 201,
   };
   return statusHTTPMap[status] ?? 500;
 }
