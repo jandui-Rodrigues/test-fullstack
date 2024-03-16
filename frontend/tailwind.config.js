@@ -5,7 +5,12 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        'uol-svg': "url('/img/logo.svg')",
+        'uol-png': "url('/img/logo.png')",
+      }
+    },
   },
   plugins: [],
 };
