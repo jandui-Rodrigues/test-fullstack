@@ -11,7 +11,7 @@ function ButtonBg(prop: PropType) {
   return (
     <div>
       <button
-        className={`${className} py-2 px-4 rounded-md w-[10rem] `}
+        className={`${className} py-2 px-4 rounded-lg w-[10rem] `}
         onClick={prop.handle}>
         {prop.nameButton}
       </button>
