@@ -4,16 +4,11 @@ services:
   db:
     image: mysql:8.0.32
     container_name: db
-    condition: service_healthy
     ports:
       - "3306:3306"
-    environment: 
+    environment:
       - MYSQL_ROOT_PASSWORD=senhaSegura
     restart: always
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
-      timeout: 10s
-      retries: 5
   backend:
     container_name: app_backend
     build: ./backend
@@ -21,7 +16,7 @@ services:
     command: dev
     ports:
       - "3001:3001"
-    volumes: 
+    volumes:
       - ./backend/src:/app-backend/src
     depends_on:
       db:
@@ -33,7 +28,11 @@ services:
       - DB_PASS=senhaSegura
       - DB_HOST=db
       - DB_PORT=3306
-    healthcheck:
-      test: ["CMD", "lsof", "-t", "-i:3001"] # Caso utilize outra porta interna para o back, altere ela aqui também
-      timeout: 10s
-      retries: 5
+  frontend:
+    container_name: app_frontend
+    build: ./frontend
+    ports:
+      - "3000:8080"
+    working_dir: /app-frontend
+    volumes:
+      - ./frontend/src:/app-frontend/src

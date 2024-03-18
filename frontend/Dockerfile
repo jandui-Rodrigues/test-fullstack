@@ -1,12 +1,14 @@
-FROM node:16.14-alpine 
+FROM node:18-alpine
 
-WORKDIR /app-backend
+WORKDIR /app-frontend
+
 COPY package*.json ./
+
 RUN npm install
 
 COPY . .
-EXPOSE 3001
+EXPOSE 8080
 
 ENTRYPOINT [ "npm", "run" ]
 
-CMD [ "start" ]
+CMD [ "dev" ]
