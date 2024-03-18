@@ -4,6 +4,7 @@ interface PropType {
   handle: MouseEventHandler<HTMLButtonElement>;
   nameButton?: string;
   className?: string;
+  type?: "button";
 }
 
 function ButtonBg(prop: PropType) {
@@ -11,7 +12,8 @@ function ButtonBg(prop: PropType) {
   return (
     <div>
       <button
-        className={`${className} py-2 px-4 rounded-lg w-[10rem] `}
+        type={prop.type}
+        className={`${className} py-2 px-4 rounded-lg w-[8.5rem] `}
         onClick={prop.handle}>
         {prop.nameButton}
       </button>
