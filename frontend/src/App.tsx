@@ -11,6 +11,7 @@ function App() {
           <User size={40} />
           <h1 className="text-3xl text-gray-800">Painel de Clientes</h1>
         </div>
+        <hr className=" bg-black w-full my-6" />
         <Outlet />
       </div>
     </>
