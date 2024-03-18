@@ -52,7 +52,7 @@ function ListClient() {
           nameButton="Novo Cliente"
         />
       </div>
-      <div className="flex flex-col gap-2 w-[100%]">
+      <div className="flex flex-col w-[100%]">
         {clients.map((client, index) => {
           return (
             <Client
