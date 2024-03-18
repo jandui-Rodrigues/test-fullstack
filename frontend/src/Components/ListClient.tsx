@@ -2,40 +2,21 @@ import { useNavigate } from "react-router";
 import ButtonBg from "./ButtonBg";
 import DynamicText from "./DynamicText";
 import Client from "./Client";
-import { States } from "../interface/Clients";
+import { useEffect, useState } from "react";
+import api from "../service/requests";
 
-const clients = [
-  {
-    name: "John Doe",
-    email: "JohnDDD@gmail.com",
-    phone: "(11) 99999-9999",
-    CPF: "12345678900",
-    status: "Ativo",
-  },
-  {
-    name: "Bruno Souza",
-    email: "bruno.souza@email.com",
-    phone: "(13) 2345-6789",
-    CPF: "23456789012",
-    status: "Inativo",
-  },
-  {
-    name: "Camila Oliveira",
-    email: "camila.oliveira@email.com",
-    phone: "(14) 3456-7890",
-    CPF: "34567890123",
-    status: "Desativado",
-  },
-  {
-    name: "Daniel Santos",
-    email: "daniel.santos@email.com",
-    phone: "(15) 4567-8901",
-    CPF: "45678901234",
-    status: "Aguardando Ativação",
-  },
-];
 function ListClient() {
   const nav = useNavigate();
+  const [clients, setClients] = useState<Client[]>([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const requestClients = await api.get("/clients");
+      setClients(requestClients.data);
+    };
+
+    fetchData();
+  }, []);
 
   const handle = () => nav("/create");
 
@@ -53,14 +34,12 @@ function ListClient() {
         />
       </div>
       <div className="flex flex-col w-[100%]">
-        {clients.map((client, index) => {
+        {clients.map((client) => {
           return (
             <Client
-              key={index}
+              key={client.id}
               client={{
-                id: index,
                 ...client,
-                status: client.status as States,
               }}
             />
           );
