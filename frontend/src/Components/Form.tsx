@@ -3,6 +3,9 @@ import validator from "validator";
 import ButtonBg from "./ButtonBg";
 import { useNavigate, useParams } from "react-router";
 import { cpfMask, phoneMask } from "../helpers/MaksInputs";
+import api, { requestCreate, requestData } from "../service/requests";
+import { useEffect, useState } from "react";
+import Message from "./Message";
 
 const Form = () => {
   const {
@@ -10,19 +13,61 @@ const Form = () => {
     handleSubmit,
     formState: { errors },
     watch,
+    setValue,
   } = useForm();
+  const [message, setMessage] = useState({
+    text: "",
+    type: "",
+  });
 
   const { id } = useParams();
   const nav = useNavigate();
 
   const cpf = watch("cpf");
   const telefone = watch("telefone");
-  const onSubmit = (data: FieldValues) => {
+
+  const onSubmit = async (data: FieldValues) => {
+    const client = {
+      phone: data.telefone,
+      name: data.name,
+      CPF: data.cpf,
+      email: data.email,
+      status: data.status,
+    };
+    if (id) {
+      await api.put(`/clients/${id}`, data);
+      setMessage({
+        text: "Cliente Atualizado com sucesso",
+        type: "success",
+      });
+      return;
+    }
     console.log(data);
+    const response = await requestCreate("/clients", client);
+    setMessage({
+      text: "Cliente Criado Com Sucesso",
+      type: "success",
+    });
+
+    console.log(response);
   };
+
+  useEffect(() => {
+    if (!id) return;
+    const fetchData = async () => {
+      const requestClients = await requestData(`/clients/${id}`);
+      console.log(requestClients);
+      setValue("name", requestClients.name);
+      setValue("email", requestClients.email);
+      setValue("cpf", requestClients.CPF);
+      setValue("telefone", requestClients.phone);
+    };
+    fetchData();
+  }, [id]);
 
   return (
     <form className="flex flex-col gap-4 mt-10">
+      {message.text && <Message message={message.text} type={message.type} />}
       <div className="">
         <input
           placeholder="Nome"
@@ -52,7 +97,6 @@ const Form = () => {
           <p className="text-red-500">Email is required</p>
         )}
       </div>
-
       <div>
         <input
           className={` w-[17rem] px-4 py-3 bg-slate-50 border rounded-md p-2 focus:outline-none 
@@ -73,7 +117,6 @@ const Form = () => {
           <p className="text-red-500">CPF is not Correct</p>
         )}
       </div>
-
       <div>
         <input
           className={` w-[17rem] px-4 py-3 bg-slate-50 border rounded-md p-2 focus:outline-none 
@@ -94,7 +137,6 @@ const Form = () => {
           <p className="text-red-500">Phone is not Correct</p>
         )}
       </div>
-
       <div>
         <select
           className={` w-[17rem] px-4 py-3 bg-slate-50 border rounded-md p-2 focus:outline-none text-gray-400
