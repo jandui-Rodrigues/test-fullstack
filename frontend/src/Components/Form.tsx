@@ -33,7 +33,7 @@ const Form = () => {
         type: "",
       });
     }, 3000);
-  }
+  };
 
   const onSubmit = async (data: FieldValues) => {
     const client = {
@@ -58,7 +58,6 @@ const Form = () => {
       type: "success",
     });
     resetMessage();
-
   };
 
   useEffect(() => {
@@ -78,7 +77,6 @@ const Form = () => {
     <form className="flex flex-col gap-4 mt-10">
       {message.text && <Message message={message.text} type={message.type} />}
       <div className="">
-        <Message message="testando" type='success' />
         <input
           placeholder="Nome"
           {...register("name", { required: true })}
