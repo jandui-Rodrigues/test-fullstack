@@ -72,7 +72,7 @@ const Form = () => {
       setValue("telefone", requestClients.phone);
     };
     fetchData();
-  }, [id]);
+  }, [id, setValue]);
 
   return (
     <form className="flex flex-col gap-4 mt-10">
