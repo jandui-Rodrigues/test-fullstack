@@ -1,7 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import App from '../App'
 import Home from '../Pages/Home'
-import Form from '../Pages/Form'
+import FormPage from '../Pages/Form.page'
 
 
 const router= createBrowserRouter([
@@ -15,11 +15,11 @@ const router= createBrowserRouter([
             },
             {
                 path: 'create',
-                element: <Form />
+                element: <FormPage />
             },
             {
                 path: 'edit/:id',
-                element: <Form />
+                element: <FormPage />
             }
         ]
         }
