@@ -1,3 +1,4 @@
+import { CheckCheck } from "lucide-react";
 import { useEffect, useState } from "react";
 
 type PropMessage = {
@@ -22,13 +23,15 @@ export default function Message(prop: PropMessage) {
   }, [message]);
   return (
     visible && (
-        <div
-            className={`${
-            type === "success" ? "bg-green-500" : "bg-red-500"
-            } text-white text-center p-2`}
-        >
-            {message}
-        </div>
+      <div
+        className={`flex items-center px-10 gap-4 shadow-2xl
+            absolute top-10 left-100 right-4 z-50 m-auto w-[30rem] h-[10rem] opacity-80 rounded-md
+            ${
+              type === "success" ? "bg-green-500" : "bg-red-500"
+            } text-white p-2`}>
+        <CheckCheck size={40} />
+        <p className="text-2xl">{message}</p>
+      </div>
     )
   );
 }

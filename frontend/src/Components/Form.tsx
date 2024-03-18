@@ -26,6 +26,15 @@ const Form = () => {
   const cpf = watch("cpf");
   const telefone = watch("telefone");
 
+  const resetMessage = () => {
+    setTimeout(() => {
+      setMessage({
+        text: "",
+        type: "",
+      });
+    }, 3000);
+  }
+
   const onSubmit = async (data: FieldValues) => {
     const client = {
       phone: data.telefone,
@@ -40,16 +49,16 @@ const Form = () => {
         text: "Cliente Atualizado com sucesso",
         type: "success",
       });
+      resetMessage();
       return;
     }
-    console.log(data);
-    const response = await requestCreate("/clients", client);
+    await requestCreate("/clients", client);
     setMessage({
       text: "Cliente Criado Com Sucesso",
       type: "success",
     });
+    resetMessage();
 
-    console.log(response);
   };
 
   useEffect(() => {
@@ -69,6 +78,7 @@ const Form = () => {
     <form className="flex flex-col gap-4 mt-10">
       {message.text && <Message message={message.text} type={message.type} />}
       <div className="">
+        <Message message="testando" type='success' />
         <input
           placeholder="Nome"
           {...register("name", { required: true })}
