@@ -13,6 +13,7 @@
     "@trybe/eslint-config-frontend": "^1.11.4",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.6.8",
     "lucide-react": "^0.358.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -23,6 +24,7 @@
     "validator": "^13.11.0"
   },
   "devDependencies": {
+    "@types/node": "^20.11.28",
     "@types/react": "^18.2.64",
     "@types/react-dom": "^18.2.21",
     "@types/validator": "^13.11.9",
