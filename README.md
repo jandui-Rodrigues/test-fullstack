@@ -4,6 +4,8 @@
 
 Foi desenvolvido um aplicativo fullstack que permita aos usuários visualizar e criar clientes. O aplicativo consiste em duas partes: o frontend e o backend. O frontend será responsável pela interface do usuário e a comunicação com a API. O backend será responsável pelo armazenamento e gerenciamento dos dados dos clientes.
 
+[Aplicativo.webm](https://github.com/jandui-Rodrigues/test-fullstack/assets/107068156/9a466cb2-ad94-4ed8-b35f-3c30a957344f)
+
 ## Requisitos do Frontend:
 
 - [x] Exibir uma listagem de clientes contendo todas as informações conforme o layout fornecido.
