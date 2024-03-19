@@ -24,6 +24,7 @@ Criar uma API que ofereça endpoints para:
 ## Qualidade de Código:
 O codigo foi Escrito seguindo as boas praticas da comunidade javaScript, no Backend foi ultilizado o padão de desenvolvimento (MVC), um paradiguima da progamação POO, alem de uma arquitetura em conjunto o SOLID.
 No front foi seguido, a componentização de elementos, usadas libs para facilitar é agilizar o desenvolvimento.
+Por ultimo Todo a aplicação foi dockerizada, podendo subir container individuais, ou orquetra usando docker-compose.
 
 ## Bibliotecas é frameworks usados :
 - Front end: vite, typeScript, React hook forms, axios, validate, tailwind, lucid react, react-router.
