@@ -23,6 +23,37 @@ Criar uma API que ofereça endpoints para:
 - [x]  Atualizar informações de cliente existente.
 - [x]  Armazenar os dados do cliente de forma persistente, com sugestão de uso do SQLite para essa finalidade.
 
+## Rodando a Aplicação
+
+ <details>
+    <summary>
+      🐳 Rodando a aplicação com docker
+    </summary>
+    <br>
+
+Acesse a pasta do projeto no terminal/cmd
+
+    $ cd test-fullstack
+
+inicie o docker compose
+
+    $ docker-compose up -d --build
+
+Para remover os conteiners
+
+    $ docker-compose down
+
+User para verificar os conteiner
+
+    $ docker logs
+
+> O servidor do frontend inciará na porta:3000 - acesse http://localhost:3000
+> <br>
+> O servidor do back inciará na porta:3001 - acesse http://localhost:3001
+
+</details>
+
+
 ## Qualidade de Código:
 O codigo foi Escrito seguindo as boas praticas da comunidade javaScript, no Backend foi ultilizado o padão de desenvolvimento (MVC), um paradiguima da progamação POO, alem de uma arquitetura em conjunto o SOLID.
 No front foi seguido, a componentização de elementos, usadas libs para facilitar é agilizar o desenvolvimento.
